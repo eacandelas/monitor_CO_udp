@@ -41,7 +41,7 @@ void setup()
 void loop()
 {
   int packeSize = 0; 
-  char* command = (char*) malloc(sizeof(char) * 12);
+  char* command = (char*) malloc(sizeof(char) * 16);
   int reading = analogRead(METER);
 
   if (reading != lastRead) {
