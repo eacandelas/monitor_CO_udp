@@ -41,13 +41,13 @@ void setup()
 void loop()
 {
   int packeSize = 0; 
-  char* command = (char*) malloc(sizeof(char) * 16);
+  char command[16];
   int reading = analogRead(METER);
 
   if (reading != lastRead) {
-    Serial.print("New reading: ");
-    Serial.println(reading, HEX);
     sprintf(command, "%03d:%03d:store", reading, DEVICE);
+    Serial.print("Command: ");
+    Serial.println(command);
     udpSend(server, PORT, command);
     lastRead = reading;
   } else {
