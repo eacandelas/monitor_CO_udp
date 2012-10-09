@@ -1,7 +1,6 @@
 #include <SPI.h>         // needed for Arduino versions later than 0018
 #include <Ethernet.h>
 #include <EthernetUdp.h>     // UDP library from: bjoern@cs.stanford.edu 12/30/2008
-#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -41,13 +40,13 @@ void setup()
 void loop()
 {
   int packeSize = 0; 
-  char* command = (char*) malloc(sizeof(char) * 12);
+  char command[16];
   int reading = analogRead(METER);
 
   if (reading != lastRead) {
-    Serial.print("New reading: ");
-    Serial.println(reading, HEX);
     sprintf(command, "%03d:%03d:store", reading, DEVICE);
+    Serial.print("Command: ");
+    Serial.println(command);
     udpSend(server, PORT, command);
     lastRead = reading;
   } else {

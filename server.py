@@ -1,6 +1,5 @@
 import SocketServer
 import shelve
-import os
 
 FILE = '/tmp/CO_log'
 HOST = ""
@@ -12,15 +11,14 @@ class cologger(SocketServer.BaseRequestHandler):
         reading = '0'
         data = self.request[0].strip().split(":")
         db = shelve.open(FILE)
-        if not 'readings' in s:
+        if not 'readings' in db:
             db['readings'] = []
         readings = db['readings']
 
         if data[0] >= 0 and len(data) > 1:
-            levels.append(data[0], data[1])
-            reading = str(data[1])
-
-        db['readings'] = ci
+            readings.append(data[1], data[0])
+	    
+        db['readings'] = readings
         db.close()
 
         socket = self.request[1]
