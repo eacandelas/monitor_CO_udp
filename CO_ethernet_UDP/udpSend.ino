@@ -1,10 +1,11 @@
 // Send a request for checkin status on our
 // UDP server
-char packetBuffer[UDP_TX_PACKET_MAX_SIZE];
+
  
 int udpSend(IPAddress server, unsigned int port, char command[])
 {
   int ps = 0;// Packet size
+  char packetBuffer[UDP_TX_PACKET_MAX_SIZE];
   Serial.print("udpSend command: "); Serial.println(command);
   udp.beginPacket(server, port);
   udp.write(command);
