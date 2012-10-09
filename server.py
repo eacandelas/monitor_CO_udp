@@ -16,10 +16,9 @@ class cologger(SocketServer.BaseRequestHandler):
         readings = db['readings']
 
         if data[0] >= 0 and len(data) > 1:
-            levels.append(data[0], data[1])
-            reading = str(data[1])
-
-        db['readings'] = ci
+            readings.append(data[1], data[0])
+	    
+        db['readings'] = readings
         db.close()
 
         socket = self.request[1]
