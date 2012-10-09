@@ -48,6 +48,7 @@ void loop()
     Serial.print("New reading: ");
     Serial.println(reading, HEX);
     sprintf(command, "%03d:%03d:store", reading, DEVICE);
+    Serial.print("String command: "); Serial.println(command);
     udpSend(server, PORT, command);
     lastRead = reading;
   } else {

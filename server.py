@@ -3,7 +3,7 @@ import shelve
 import os
 
 FILE = '/tmp/CO_log'
-HOST = ""
+HOST = "localhost"
 PORT = 2323
 
 class cologger(SocketServer.BaseRequestHandler):
@@ -11,6 +11,7 @@ class cologger(SocketServer.BaseRequestHandler):
     def handle(self):
         reading = '0'
         data = self.request[0].strip().split(":")
+        print data[0]
         db = shelve.open(FILE)
         if not 'readings' in s:
             db['readings'] = []
