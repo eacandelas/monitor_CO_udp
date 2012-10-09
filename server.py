@@ -1,6 +1,5 @@
 import SocketServer
 import shelve
-import os
 
 FILE = '/tmp/CO_log'
 HOST = ""
