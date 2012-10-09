@@ -12,7 +12,7 @@ class cologger(SocketServer.BaseRequestHandler):
         reading = '0'
         data = self.request[0].strip().split(":")
         db = shelve.open(FILE)
-        if not 'readings' in s:
+        if not 'readings' in db:
             db['readings'] = []
         readings = db['readings']
 
