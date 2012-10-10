@@ -18,14 +18,14 @@ class cologger(SocketServer.BaseRequestHandler):
         readings = db['readings']
 
         if data[0] >= 0 and len(data) > 1:
-            readings.append(data[1])
-            readings.append(data[0])
+            readings.append((data[1],data[0]))
 	    
         db['readings'] = readings
         db.close()
-
+       
+        response= data[1] + ":" + data[0]
         socket = self.request[1]
-        socket.sendto(reading, self.client_address)
+        socket.sendto(response, self.client_address)
 
 if __name__ == "__main__":
     print "Starting server..."

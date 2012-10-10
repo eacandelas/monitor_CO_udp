@@ -13,6 +13,7 @@ int udpSend(IPAddress server, unsigned int port, char command[])
   if (ps) {
     udp.read(packetBuffer, UDP_TX_PACKET_MAX_SIZE);
     // If packetBuffer and command are equal
+    Serial.print("Response from server: ");Serial.println(packetBuffer);
     if (strcmp(packetBuffer, command) == 0) {
       return 1;
     }

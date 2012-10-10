@@ -10,8 +10,8 @@
 #define DEVICE 0 // The device's identificator
 
 // Enter a MAC address and IP address for your controller below.
-byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-IPAddress server(66, 228, 50, 204);
+byte mac[] = {0x90, 0xA2, 0xDA, 0x00, 0x82, 0x83 };
+IPAddress server(192, 168, 1, 109);
 // The IP address will be dependent on your local network:
 IPAddress address(192, 168, 1, 201);
 
