@@ -40,7 +40,7 @@ void setup()
 void loop()
 {
   int packeSize = 0; 
-  char command[16];
+  char command[24];
   int reading = analogRead(METER);
 
   if (reading != lastRead) {
