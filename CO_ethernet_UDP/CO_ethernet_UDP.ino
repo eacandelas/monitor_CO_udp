@@ -44,7 +44,7 @@ void loop()
   int reading = analogRead(METER);
 
   if (reading != lastRead) {
-    sprintf(command, "%03d:%03d:store", reading, DEVICE);
+    sprintf(command, "store:%03d:%03d", reading, DEVICE);
     Serial.print("Command: ");
     Serial.println(command);
     udpSend(server, PORT, command);
